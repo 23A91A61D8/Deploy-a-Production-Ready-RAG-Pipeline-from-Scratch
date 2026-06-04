@@ -401,16 +401,3 @@ RAG is a factual Q&A system. Temperature=0 makes generation deterministic and re
 
 ---
 
-## 👤 Author
-
-**Arepalli Venkata Lakshmi**
-Built as part of the Partnr GPP Program — Deploy a Production-Ready RAG Pipeline from Scratch.
-
----
-
-## 📄 License
-
-MIT License
-=======
-# Deploy-a-Production-Ready-RAG-Pipeline-from-Scratch
->>>>>>> 328efaedc44c8e4328638960cf4efd189011f066
