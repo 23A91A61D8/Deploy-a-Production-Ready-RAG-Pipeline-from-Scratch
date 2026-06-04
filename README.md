@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🔍 Production-Ready RAG Pipeline from Scratch
 
 A complete, production-ready **Retrieval-Augmented Generation (RAG)** pipeline built from the ground up — without relying on high-level abstractions like LangChain or LlamaIndex. Every component (document loading, chunking, embedding, vector storage, retrieval, and LLM generation) is implemented explicitly so the inner mechanics are fully transparent and understandable.
