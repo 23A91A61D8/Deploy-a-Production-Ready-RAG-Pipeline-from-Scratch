@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🔍 Production-Ready RAG Pipeline from Scratch
 
 A complete, production-ready **Retrieval-Augmented Generation (RAG)** pipeline built from the ground up — without relying on high-level abstractions like LangChain or LlamaIndex. Every component (document loading, chunking, embedding, vector storage, retrieval, and LLM generation) is implemented explicitly so the inner mechanics are fully transparent and understandable.
@@ -410,3 +411,6 @@ Built as part of the Partnr GPP Program — Deploy a Production-Ready RAG Pipeli
 ## 📄 License
 
 MIT License
+=======
+# Deploy-a-Production-Ready-RAG-Pipeline-from-Scratch
+>>>>>>> 328efaedc44c8e4328638960cf4efd189011f066
