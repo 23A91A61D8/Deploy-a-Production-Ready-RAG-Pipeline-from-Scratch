@@ -1,0 +1,79 @@
+Retrieval-Augmented Generation: A Technical Deep Dive
+
+What is Retrieval-Augmented Generation?
+
+Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a response. RAG was introduced in a 2020 paper by researchers at Facebook AI Research.
+
+The core idea behind RAG is simple: instead of relying solely on the knowledge baked into a model's parameters during training, the model is given access to an external source of up-to-date, relevant information at inference time. This combination of retrieval and generation gives RAG systems significant advantages over standalone LLMs.
+
+Why RAG is Better Than Fine-Tuning Alone
+
+Fine-tuning updates the weights of a language model using domain-specific data. While effective, it has several drawbacks. Fine-tuning is expensive and time-consuming. The knowledge becomes static after training. It does not provide citations or verifiability. The model may still hallucinate outside its fine-tuned knowledge.
+
+RAG addresses all of these issues by keeping the knowledge external and dynamically retrievable. New documents can be added to the knowledge base without any model retraining. The retrieved chunks serve as citations, providing verifiability to the user.
+
+The RAG Pipeline Architecture
+
+A RAG pipeline has two phases: the ingestion phase and the query phase.
+
+The ingestion phase is run once (or periodically) to build the knowledge base. During ingestion, documents are loaded from various sources such as PDF files, text files, HTML pages, or databases. The loaded text is then split into smaller chunks, typically between 300 and 500 tokens in length. Each chunk is converted into a vector embedding using an embedding model. These embeddings, along with the original text and metadata, are stored in a vector database.
+
+The query phase runs in real-time for each user question. When a user submits a question, it is embedded using the same model that was used to embed the documents. The query vector is compared to all document vectors in the database using cosine similarity. The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context.
+
+Vector Databases
+
+A vector database is a database designed to store, manage, and query high-dimensional vector data efficiently. Unlike traditional relational databases that search by exact matches, vector databases search by similarity.
+
+ChromaDB is an open-source embedding database that is easy to set up and use. It supports persistent storage and efficient similarity search. ChromaDB is an excellent choice for local development and small-to-medium scale deployments.
+
+FAISS (Facebook AI Similarity Search) is a library developed by Facebook Research for efficient similarity search and clustering of dense vectors. FAISS is highly optimized and can handle billions of vectors. It supports both CPU and GPU operations.
+
+Pinecone is a fully managed vector database service. It offers high scalability and ease of use but requires a paid subscription for production use.
+
+Chunking Strategies for RAG
+
+The quality of chunking has a major impact on retrieval performance. Poor chunking can lead to relevant information being split across chunks, causing retrieval failures.
+
+Fixed-size chunking splits text every N tokens regardless of content boundaries. It is the simplest approach but can break sentences in the middle.
+
+Sentence-aware chunking respects sentence boundaries, ensuring that each chunk contains complete sentences. This preserves semantic coherence within each chunk.
+
+Sliding window chunking uses a fixed chunk size but introduces an overlap between consecutive chunks. This overlap ensures that information at chunk boundaries is not lost.
+
+Recursive character text splitting, popularized by LangChain, tries to split on natural boundaries (paragraphs, then sentences, then words) in a hierarchical fashion.
+
+Embedding Models
+
+The choice of embedding model significantly affects retrieval quality. The model used during ingestion and the model used during query must be identical.
+
+OpenAI's text-embedding-3-small is a high-quality, cost-effective embedding model that produces 1536-dimensional vectors. It is the recommended starting point for most RAG applications.
+
+OpenAI's text-embedding-3-large produces higher-quality embeddings at a higher cost. It is suitable for applications where retrieval accuracy is critical.
+
+Sentence Transformers is an open-source library that provides many high-quality embedding models that can be run locally for free. The all-MiniLM-L6-v2 model is a popular choice that balances performance and speed.
+
+Evaluating RAG Systems
+
+Evaluating a RAG system requires measuring both retrieval quality and generation quality.
+
+Retrieval precision@K measures how often the correct chunk appears in the top-K retrieved results. A higher K value gives more opportunities to retrieve the correct chunk.
+
+Answer faithfulness measures whether the generated answer is actually supported by the retrieved context, with no hallucinated information.
+
+Answer relevance measures whether the generated answer is relevant to the user's question, regardless of whether it is supported by context.
+
+Context recall measures whether the retrieved context contains all the information needed to answer the question correctly.
+
+Frameworks like RAGAS provide automated tools for evaluating all of these metrics using an LLM as a judge.
+
+Advanced RAG Techniques
+
+Hybrid search combines vector similarity search with traditional keyword-based search (such as BM25). This improves retrieval for queries that contain important keywords that might be missed by pure semantic search.
+
+Re-ranking uses a cross-encoder model to re-rank the initially retrieved chunks. The cross-encoder takes both the query and a chunk as joint input and produces a single relevance score. This is more accurate than the bi-encoder approach used in the initial retrieval but is too slow to run on the entire corpus.
+
+HyDE (Hypothetical Document Embeddings) generates a hypothetical answer to the question and uses that answer as the query embedding, rather than the original question. This can improve retrieval because the hypothetical answer may be more semantically similar to the relevant document chunks.
+
+Multi-hop reasoning addresses complex questions that require synthesizing information from multiple document chunks. One approach is to iteratively retrieve and read chunks, updating the query at each step.
+
+Query decomposition breaks a complex question into simpler sub-questions, answers each sub-question independently using RAG, and then combines the answers into a final response.

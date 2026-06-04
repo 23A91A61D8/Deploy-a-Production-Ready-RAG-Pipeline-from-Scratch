@@ -1,0 +1,366 @@
+2026-06-04 15:36:13,220 [INFO] src.embedder � TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:36:13,220 [INFO] src.embedder � Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:36:13,613 [INFO] faiss.loader � Loading faiss with AVX2 support.
+2026-06-04 15:36:13,615 [INFO] faiss.loader � Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:36:13,615 [INFO] faiss.loader � Loading faiss.
+2026-06-04 15:36:13,957 [INFO] faiss.loader � Successfully loaded faiss.
+2026-06-04 15:36:13,971 [INFO] src.vector_store � FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:36:13,971 [INFO] src.rag_pipeline � Embedding query: 'What is Machine Learning?'
+2026-06-04 15:36:13,989 [INFO] src.rag_pipeline � Searching vector store (top_k=5)�
+2026-06-04 15:36:13,989 [INFO] src.rag_pipeline � Retrieved 5 chunks. Top score: 0.4467
+2026-06-04 15:36:13,989 [INFO] src.rag_pipeline � Calling LLM model 'llama-3.1-8b-instant'�
+2026-06-04 15:36:19,383 [INFO] httpx � HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:36:19,398 [INFO] src.rag_pipeline � LLM answered (225 chars).
+
+======================================================================
+2026-06-04 15:37:06,015 [INFO] src.embedder — TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:37:06,015 [INFO] src.embedder — Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:37:06,418 [INFO] faiss.loader — Loading faiss with AVX2 support.
+2026-06-04 15:37:06,418 [INFO] faiss.loader — Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:37:06,418 [INFO] faiss.loader — Loading faiss.
+2026-06-04 15:37:06,791 [INFO] faiss.loader — Successfully loaded faiss.
+2026-06-04 15:37:06,803 [INFO] src.vector_store — FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:37:06,803 [INFO] src.rag_pipeline — Embedding query: 'What is Machine Learning?'
+2026-06-04 15:37:06,804 [INFO] src.rag_pipeline — Searching vector store (top_k=5)…
+2026-06-04 15:37:06,804 [INFO] src.rag_pipeline — Retrieved 5 chunks. Top score: 0.4467
+2026-06-04 15:37:06,804 [INFO] src.rag_pipeline — Calling LLM model 'llama-3.1-8b-instant'…
+2026-06-04 15:37:13,006 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:37:13,019 [INFO] src.rag_pipeline — LLM answered (225 chars).
+
+======================================================================
+❓ QUESTION:
+   What is Machine Learning?
+----------------------------------------------------------------------
+🤖 ANSWER:
+   Machine Learning (ML) is a subset of artificial intelligence that enables machines to learn from experience without being explicitly programmed. ML systems improve their performance over time as they are exposed to more data.
+----------------------------------------------------------------------
+📚 SOURCES:
+
+  [1] ai_overview.txt  (chunk #0, similarity=0.4467)
+      "Artificial Intelligence: A Comprehensive Overview  Introduction to Artificial Intelligence  Artificial Intelligence (AI) is the simulation of human intelligence processes by computer systems. These processes include learning (the acquisition of information and rules for using the information), reaso…"
+
+  [2] ai_overview.txt  (chunk #1, similarity=0.1965)
+      "Common techniques include clustering (such as K-means) and dimensionality reduction (such as PCA). In reinforcement learning, an agent learns to make decisions by taking actions in an environment and receiving rewards or penalties. This approach has been used to train systems that play games at supe…"
+
+  [3] rag_technical_guide.txt  (chunk #1, similarity=0.1159)
+      "The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context. Vector Databases  A vector database is a database designed to store, manage, and…"
+
+  [4] vector_databases.txt  (chunk #0, similarity=0.0922)
+      "Vector Databases and Similarity Search: A Practical Guide  Introduction to Vector Databases  A vector database is a type of database that stores data as high-dimensional vectors, also known as vector embeddings. These databases are specifically designed to enable efficient similarity searches across…"
+
+  [5] rag_technical_guide.txt  (chunk #0, similarity=0.0920)
+      "Retrieval-Augmented Generation: A Technical Deep Dive  What is Retrieval-Augmented Generation? Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a resp…"
+======================================================================
+
+2026-06-04 15:38:06,460 [INFO] src.embedder — TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:38:06,460 [INFO] src.embedder — Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:38:06,825 [INFO] faiss.loader — Loading faiss with AVX2 support.
+2026-06-04 15:38:06,826 [INFO] faiss.loader — Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:38:06,826 [INFO] faiss.loader — Loading faiss.
+2026-06-04 15:38:07,141 [INFO] faiss.loader — Successfully loaded faiss.
+2026-06-04 15:38:07,158 [INFO] src.vector_store — FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:38:07,158 [INFO] src.rag_pipeline — Embedding query: 'What is RAG?'
+2026-06-04 15:38:07,159 [INFO] src.rag_pipeline — Searching vector store (top_k=5)…
+2026-06-04 15:38:07,159 [INFO] src.rag_pipeline — Retrieved 5 chunks. Top score: 0.3552
+2026-06-04 15:38:07,160 [INFO] src.rag_pipeline — Calling LLM model 'llama-3.1-8b-instant'…
+2026-06-04 15:38:13,624 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:38:13,638 [INFO] src.rag_pipeline — LLM answered (210 chars).
+
+======================================================================
+❓ QUESTION:
+   What is RAG?
+----------------------------------------------------------------------
+🤖 ANSWER:
+   Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a response.
+----------------------------------------------------------------------
+📚 SOURCES:
+
+  [1] rag_technical_guide.txt  (chunk #0, similarity=0.3552)
+      "Retrieval-Augmented Generation: A Technical Deep Dive  What is Retrieval-Augmented Generation? Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a resp…"
+
+  [2] rag_technical_guide.txt  (chunk #1, similarity=0.2779)
+      "The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context. Vector Databases  A vector database is a database designed to store, manage, and…"
+
+  [3] rag_technical_guide.txt  (chunk #2, similarity=0.2519)
+      "It is the recommended starting point for most RAG applications. OpenAI's text-embedding-3-large produces higher-quality embeddings at a higher cost. It is suitable for applications where retrieval accuracy is critical. Sentence Transformers is an open-source library that provides many high-quality e…"
+
+  [4] vector_databases.txt  (chunk #1, similarity=0.1189)
+      "HNSW (Hierarchical Navigable Small World) is a graph-based indexing algorithm. It builds a multi-layer graph where nearby vectors are connected to each other. Search starts at the top layer (with few, widely-connected nodes) and progressively navigates to more specific layers. HNSW offers excellent …"
+
+  [5] ai_overview.txt  (chunk #0, similarity=0.1007)
+      "Artificial Intelligence: A Comprehensive Overview  Introduction to Artificial Intelligence  Artificial Intelligence (AI) is the simulation of human intelligence processes by computer systems. These processes include learning (the acquisition of information and rules for using the information), reaso…"
+======================================================================
+
+2026-06-04 15:38:22,012 [INFO] src.embedder — TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:38:22,012 [INFO] src.embedder — Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:38:22,381 [INFO] faiss.loader — Loading faiss with AVX2 support.
+2026-06-04 15:38:22,381 [INFO] faiss.loader — Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:38:22,381 [INFO] faiss.loader — Loading faiss.
+2026-06-04 15:38:22,702 [INFO] faiss.loader — Successfully loaded faiss.
+2026-06-04 15:38:22,727 [INFO] src.vector_store — FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:38:22,727 [INFO] src.rag_pipeline — Embedding query: 'What is the difference between ChromaDB and FAISS?'
+2026-06-04 15:38:22,727 [INFO] src.rag_pipeline — Searching vector store (top_k=5)…
+2026-06-04 15:38:22,727 [INFO] src.rag_pipeline — Retrieved 5 chunks. Top score: 0.4839
+2026-06-04 15:38:22,727 [INFO] src.rag_pipeline — Calling LLM model 'llama-3.1-8b-instant'…
+2026-06-04 15:38:28,369 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:38:28,386 [INFO] src.rag_pipeline — LLM answered (1786 chars).
+
+======================================================================
+❓ QUESTION:
+   What is the difference between ChromaDB and FAISS?
+----------------------------------------------------------------------
+🤖 ANSWER:
+   ChromaDB and FAISS are both vector databases used for efficient similarity search and clustering of dense vectors. However, they have some key differences:
+
+1. **Ease of use**: ChromaDB is designed to be easy to use for AI applications, with a simple and intuitive Python API. FAISS, on the other hand, is a library that requires more expertise to use, especially for larger datasets.
+
+2. **Built-in filtering mechanism**: ChromaDB has a built-in filtering mechanism that allows users to restrict search to only documents from a specific source file. FAISS does not have a built-in filtering mechanism and requires users to implement it at the application level.
+
+3. **Indexing algorithm**: ChromaDB uses HNSW (Hierarchical Navigable Small World) indexing by default, while FAISS supports multiple index types, including IndexIVFFlat (inverted file indexing) and IndexIVFPQ (product quantization for memory efficiency).
+
+4. **Persistent storage**: ChromaDB supports persistent storage, allowing the index to survive application restarts. FAISS does not have built-in support for persistent storage.
+
+5. **Scalability**: FAISS is highly optimized and can handle billions of vectors, making it a better choice for high-performance production deployments. ChromaDB is recommended for local development and small-to-medium scale deployments.
+
+6. **Metadata storage**: ChromaDB stores metadata natively, while FAISS does not store metadata natively and requires users to manage a separate mapping from vector index to metadata.
+
+In summary, ChromaDB is a more user-friendly and easier-to-use vector database, while FAISS is a more powerful and scalable library that requires more expertise to use. The choice between the two depends on the specific needs and requirements of the application.
+----------------------------------------------------------------------
+📚 SOURCES:
+
+  [1] vector_databases.txt  (chunk #1, similarity=0.4839)
+      "HNSW (Hierarchical Navigable Small World) is a graph-based indexing algorithm. It builds a multi-layer graph where nearby vectors are connected to each other. Search starts at the top layer (with few, widely-connected nodes) and progressively navigates to more specific layers. HNSW offers excellent …"
+
+  [2] vector_databases.txt  (chunk #2, similarity=0.4583)
+      "For larger datasets, IndexIVFFlat adds inverted file indexing, and IndexIVFPQ adds product quantization for memory efficiency. A key consideration when using FAISS is that it does not store the original text or metadata natively. You must manage a separate mapping from vector index to metadata (such…"
+
+  [3] rag_technical_guide.txt  (chunk #1, similarity=0.3180)
+      "The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context. Vector Databases  A vector database is a database designed to store, manage, and…"
+
+  [4] rag_technical_guide.txt  (chunk #0, similarity=0.2757)
+      "Retrieval-Augmented Generation: A Technical Deep Dive  What is Retrieval-Augmented Generation? Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a resp…"
+
+  [5] vector_databases.txt  (chunk #0, similarity=0.2515)
+      "Vector Databases and Similarity Search: A Practical Guide  Introduction to Vector Databases  A vector database is a type of database that stores data as high-dimensional vectors, also known as vector embeddings. These databases are specifically designed to enable efficient similarity searches across…"
+======================================================================
+
+2026-06-04 15:38:42,807 [INFO] src.embedder — TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:38:42,808 [INFO] src.embedder — Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:38:43,182 [INFO] faiss.loader — Loading faiss with AVX2 support.
+2026-06-04 15:38:43,183 [INFO] faiss.loader — Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:38:43,183 [INFO] faiss.loader — Loading faiss.
+2026-06-04 15:38:43,498 [INFO] faiss.loader — Successfully loaded faiss.
+2026-06-04 15:38:43,512 [INFO] src.vector_store — FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:38:43,512 [INFO] src.rag_pipeline — Embedding query: 'What is cosine similarity?'
+2026-06-04 15:38:43,513 [INFO] src.rag_pipeline — Searching vector store (top_k=5)…
+2026-06-04 15:38:43,513 [INFO] src.rag_pipeline — Retrieved 5 chunks. Top score: 0.2636
+2026-06-04 15:38:43,513 [INFO] src.rag_pipeline — Calling LLM model 'llama-3.1-8b-instant'…
+2026-06-04 15:38:49,923 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:38:49,939 [INFO] src.rag_pipeline — LLM answered (307 chars).
+
+======================================================================
+❓ QUESTION:
+   What is cosine similarity?
+----------------------------------------------------------------------
+🤖 ANSWER:
+   Cosine similarity measures the cosine of the angle between two vectors. It ranges from -1 (completely opposite) to 1 (identical direction). Cosine similarity is scale-invariant, meaning it only cares about the direction of the vectors, not their magnitude. This makes it ideal for comparing text embeddings.
+----------------------------------------------------------------------
+📚 SOURCES:
+
+  [1] vector_databases.txt  (chunk #0, similarity=0.2636)
+      "Vector Databases and Similarity Search: A Practical Guide  Introduction to Vector Databases  A vector database is a type of database that stores data as high-dimensional vectors, also known as vector embeddings. These databases are specifically designed to enable efficient similarity searches across…"
+
+  [2] rag_technical_guide.txt  (chunk #1, similarity=0.2062)
+      "The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context. Vector Databases  A vector database is a database designed to store, manage, and…"
+
+  [3] vector_databases.txt  (chunk #1, similarity=0.1988)
+      "HNSW (Hierarchical Navigable Small World) is a graph-based indexing algorithm. It builds a multi-layer graph where nearby vectors are connected to each other. Search starts at the top layer (with few, widely-connected nodes) and progressively navigates to more specific layers. HNSW offers excellent …"
+
+  [4] ai_overview.txt  (chunk #2, similarity=0.1949)
+      "Sentence embeddings represent entire sentences or paragraphs. Models like OpenAI's text-embedding-3-small produce embeddings that capture semantic meaning very effectively. The cosine similarity between two vectors measures how similar they are. A cosine similarity of 1.0 means the vectors are ident…"
+
+  [5] rag_technical_guide.txt  (chunk #0, similarity=0.1667)
+      "Retrieval-Augmented Generation: A Technical Deep Dive  What is Retrieval-Augmented Generation? Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a resp…"
+======================================================================
+
+2026-06-04 15:38:53,903 [INFO] src.embedder — TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:38:53,904 [INFO] src.embedder — Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:38:54,261 [INFO] faiss.loader — Loading faiss with AVX2 support.
+2026-06-04 15:38:54,262 [INFO] faiss.loader — Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:38:54,262 [INFO] faiss.loader — Loading faiss.
+2026-06-04 15:38:54,565 [INFO] faiss.loader — Successfully loaded faiss.
+2026-06-04 15:38:54,577 [INFO] src.vector_store — FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:38:54,578 [INFO] src.rag_pipeline — Embedding query: 'What are chunking strategies?'
+2026-06-04 15:38:54,578 [INFO] src.rag_pipeline — Searching vector store (top_k=5)…
+2026-06-04 15:38:54,578 [INFO] src.rag_pipeline — Retrieved 5 chunks. Top score: 0.1292
+2026-06-04 15:38:54,579 [INFO] src.rag_pipeline — Calling LLM model 'llama-3.1-8b-instant'…
+2026-06-04 15:38:59,223 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:38:59,241 [INFO] src.rag_pipeline — LLM answered (476 chars).
+
+======================================================================
+❓ QUESTION:
+   What are chunking strategies?
+----------------------------------------------------------------------
+🤖 ANSWER:
+   Chunking strategies include:
+
+1. Fixed-size chunking: splits text every N tokens regardless of content boundaries.
+2. Sentence-aware chunking: respects sentence boundaries, ensuring that each chunk contains complete sentences.
+3. Sliding window chunking: uses a fixed chunk size but introduces an overlap between consecutive chunks.
+4. Recursive character text splitting: tries to split on natural boundaries (paragraphs, then sentences, then words) in a hierarchical fashion.
+----------------------------------------------------------------------
+📚 SOURCES:
+
+  [1] vector_databases.txt  (chunk #0, similarity=0.1292)
+      "Vector Databases and Similarity Search: A Practical Guide  Introduction to Vector Databases  A vector database is a type of database that stores data as high-dimensional vectors, also known as vector embeddings. These databases are specifically designed to enable efficient similarity searches across…"
+
+  [2] ai_overview.txt  (chunk #1, similarity=0.1002)
+      "Common techniques include clustering (such as K-means) and dimensionality reduction (such as PCA). In reinforcement learning, an agent learns to make decisions by taking actions in an environment and receiving rewards or penalties. This approach has been used to train systems that play games at supe…"
+
+  [3] ai_overview.txt  (chunk #2, similarity=0.0820)
+      "Sentence embeddings represent entire sentences or paragraphs. Models like OpenAI's text-embedding-3-small produce embeddings that capture semantic meaning very effectively. The cosine similarity between two vectors measures how similar they are. A cosine similarity of 1.0 means the vectors are ident…"
+
+  [4] rag_technical_guide.txt  (chunk #1, similarity=0.0589)
+      "The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context. Vector Databases  A vector database is a database designed to store, manage, and…"
+
+  [5] rag_technical_guide.txt  (chunk #0, similarity=0.0385)
+      "Retrieval-Augmented Generation: A Technical Deep Dive  What is Retrieval-Augmented Generation? Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a resp…"
+======================================================================
+
+2026-06-04 15:39:03,885 [INFO] src.embedder — TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:39:03,885 [INFO] src.embedder — Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:39:04,247 [INFO] faiss.loader — Loading faiss with AVX2 support.
+2026-06-04 15:39:04,247 [INFO] faiss.loader — Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:39:04,247 [INFO] faiss.loader — Loading faiss.
+2026-06-04 15:39:04,416 [INFO] faiss.loader — Successfully loaded faiss.
+2026-06-04 15:39:04,416 [INFO] src.vector_store — FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:39:04,416 [INFO] src.rag_pipeline — Embedding query: 'What is a vector database?'
+2026-06-04 15:39:04,416 [INFO] src.rag_pipeline — Searching vector store (top_k=5)…
+2026-06-04 15:39:04,431 [INFO] src.rag_pipeline — Retrieved 5 chunks. Top score: 0.3343
+2026-06-04 15:39:04,431 [INFO] src.rag_pipeline — Calling LLM model 'llama-3.1-8b-instant'…
+2026-06-04 15:39:09,337 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-04 15:39:09,338 [INFO] openai._base_client — Retrying request to /chat/completions in 16.000000 seconds
+2026-06-04 15:39:28,686 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:39:28,700 [INFO] src.rag_pipeline — LLM answered (213 chars).
+
+======================================================================
+❓ QUESTION:
+   What is a vector database?
+----------------------------------------------------------------------
+🤖 ANSWER:
+   A vector database is a type of database that stores data as high-dimensional vectors, also known as vector embeddings. It is designed to enable efficient similarity searches across millions or billions of vectors.
+----------------------------------------------------------------------
+📚 SOURCES:
+
+  [1] vector_databases.txt  (chunk #0, similarity=0.3343)
+      "Vector Databases and Similarity Search: A Practical Guide  Introduction to Vector Databases  A vector database is a type of database that stores data as high-dimensional vectors, also known as vector embeddings. These databases are specifically designed to enable efficient similarity searches across…"
+
+  [2] rag_technical_guide.txt  (chunk #1, similarity=0.2928)
+      "The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context. Vector Databases  A vector database is a database designed to store, manage, and…"
+
+  [3] rag_technical_guide.txt  (chunk #0, similarity=0.2810)
+      "Retrieval-Augmented Generation: A Technical Deep Dive  What is Retrieval-Augmented Generation? Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a resp…"
+
+  [4] vector_databases.txt  (chunk #1, similarity=0.1648)
+      "HNSW (Hierarchical Navigable Small World) is a graph-based indexing algorithm. It builds a multi-layer graph where nearby vectors are connected to each other. Search starts at the top layer (with few, widely-connected nodes) and progressively navigates to more specific layers. HNSW offers excellent …"
+
+  [5] rag_technical_guide.txt  (chunk #2, similarity=0.1126)
+      "It is the recommended starting point for most RAG applications. OpenAI's text-embedding-3-large produces higher-quality embeddings at a higher cost. It is suitable for applications where retrieval accuracy is critical. Sentence Transformers is an open-source library that provides many high-quality e…"
+======================================================================
+
+2026-06-04 15:39:33,002 [INFO] src.embedder — TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:39:33,003 [INFO] src.embedder — Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:39:33,270 [INFO] faiss.loader — Loading faiss with AVX2 support.
+2026-06-04 15:39:33,271 [INFO] faiss.loader — Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:39:33,271 [INFO] faiss.loader — Loading faiss.
+2026-06-04 15:39:33,304 [INFO] faiss.loader — Successfully loaded faiss.
+2026-06-04 15:39:33,317 [INFO] src.vector_store — FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:39:33,318 [INFO] src.rag_pipeline — Embedding query: 'What is deep learning?'
+2026-06-04 15:39:33,318 [INFO] src.rag_pipeline — Searching vector store (top_k=5)…
+2026-06-04 15:39:33,319 [INFO] src.rag_pipeline — Retrieved 5 chunks. Top score: 0.4467
+2026-06-04 15:39:33,319 [INFO] src.rag_pipeline — Calling LLM model 'llama-3.1-8b-instant'…
+2026-06-04 15:39:37,505 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-04 15:39:37,506 [INFO] openai._base_client — Retrying request to /chat/completions in 19.000000 seconds
+2026-06-04 15:39:58,913 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:39:58,929 [INFO] src.rag_pipeline — LLM answered (198 chars).
+
+======================================================================
+❓ QUESTION:
+   What is deep learning?
+----------------------------------------------------------------------
+🤖 ANSWER:
+   Deep Learning is a specialized subset of machine learning that uses neural networks with many layers (hence "deep"). These deep neural networks can automatically learn representations from raw data.
+----------------------------------------------------------------------
+📚 SOURCES:
+
+  [1] ai_overview.txt  (chunk #0, similarity=0.4467)
+      "Artificial Intelligence: A Comprehensive Overview  Introduction to Artificial Intelligence  Artificial Intelligence (AI) is the simulation of human intelligence processes by computer systems. These processes include learning (the acquisition of information and rules for using the information), reaso…"
+
+  [2] ai_overview.txt  (chunk #1, similarity=0.2507)
+      "Common techniques include clustering (such as K-means) and dimensionality reduction (such as PCA). In reinforcement learning, an agent learns to make decisions by taking actions in an environment and receiving rewards or penalties. This approach has been used to train systems that play games at supe…"
+
+  [3] rag_technical_guide.txt  (chunk #0, similarity=0.1180)
+      "Retrieval-Augmented Generation: A Technical Deep Dive  What is Retrieval-Augmented Generation? Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a resp…"
+
+  [4] rag_technical_guide.txt  (chunk #1, similarity=0.1159)
+      "The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context. Vector Databases  A vector database is a database designed to store, manage, and…"
+
+  [5] vector_databases.txt  (chunk #1, similarity=0.0852)
+      "HNSW (Hierarchical Navigable Small World) is a graph-based indexing algorithm. It builds a multi-layer graph where nearby vectors are connected to each other. Search starts at the top layer (with few, widely-connected nodes) and progressively navigates to more specific layers. HNSW offers excellent …"
+======================================================================
+
+2026-06-04 15:40:03,231 [INFO] src.embedder — TFIDFEmbedder: loaded vocab (384 terms)
+2026-06-04 15:40:03,232 [INFO] src.embedder — Embedder initialized: backend=tfidf (lightweight)
+2026-06-04 15:40:03,514 [INFO] faiss.loader — Loading faiss with AVX2 support.
+2026-06-04 15:40:03,515 [INFO] faiss.loader — Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-06-04 15:40:03,515 [INFO] faiss.loader — Loading faiss.
+2026-06-04 15:40:03,544 [INFO] faiss.loader — Successfully loaded faiss.
+2026-06-04 15:40:03,555 [INFO] src.vector_store — FAISSVectorStore: loaded existing index (9 vectors).
+2026-06-04 15:40:03,556 [INFO] src.rag_pipeline — Embedding query: 'What are advantages of RAG over fine-tuning?'
+2026-06-04 15:40:03,556 [INFO] src.rag_pipeline — Searching vector store (top_k=5)…
+2026-06-04 15:40:03,556 [INFO] src.rag_pipeline — Retrieved 5 chunks. Top score: 0.2397
+2026-06-04 15:40:03,557 [INFO] src.rag_pipeline — Calling LLM model 'llama-3.1-8b-instant'…
+2026-06-04 15:40:08,165 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-04 15:40:08,166 [INFO] openai._base_client — Retrying request to /chat/completions in 16.000000 seconds
+2026-06-04 15:40:28,349 [INFO] httpx — HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-04 15:40:28,364 [INFO] src.rag_pipeline — LLM answered (375 chars).
+
+======================================================================
+❓ QUESTION:
+   What are advantages of RAG over fine-tuning?
+----------------------------------------------------------------------
+🤖 ANSWER:
+   RAG addresses all of the issues with fine-tuning by keeping the knowledge external and dynamically retrievable. The advantages of RAG over fine-tuning include:
+
+1. RAG is not expensive and time-consuming.
+2. The knowledge is not static after training.
+3. RAG provides citations or verifiability to the user.
+4. The model does not hallucinate outside its fine-tuned knowledge.
+----------------------------------------------------------------------
+📚 SOURCES:
+
+  [1] rag_technical_guide.txt  (chunk #0, similarity=0.2397)
+      "Retrieval-Augmented Generation: A Technical Deep Dive  What is Retrieval-Augmented Generation? Retrieval-Augmented Generation (RAG) is an AI framework that enhances Large Language Models (LLMs) by allowing them to retrieve relevant information from an external knowledge base before generating a resp…"
+
+  [2] ai_overview.txt  (chunk #1, similarity=0.1723)
+      "Common techniques include clustering (such as K-means) and dimensionality reduction (such as PCA). In reinforcement learning, an agent learns to make decisions by taking actions in an environment and receiving rewards or penalties. This approach has been used to train systems that play games at supe…"
+
+  [3] rag_technical_guide.txt  (chunk #1, similarity=0.1338)
+      "The top-K most similar chunks are retrieved. These chunks are inserted into a prompt template along with the original question. The prompt is sent to an LLM, which generates an answer based only on the provided context. Vector Databases  A vector database is a database designed to store, manage, and…"
+
+  [4] rag_technical_guide.txt  (chunk #2, similarity=0.1079)
+      "It is the recommended starting point for most RAG applications. OpenAI's text-embedding-3-large produces higher-quality embeddings at a higher cost. It is suitable for applications where retrieval accuracy is critical. Sentence Transformers is an open-source library that provides many high-quality e…"
+
+  [5] vector_databases.txt  (chunk #2, similarity=0.1065)
+      "For larger datasets, IndexIVFFlat adds inverted file indexing, and IndexIVFPQ adds product quantization for memory efficiency. A key consideration when using FAISS is that it does not store the original text or metadata natively. You must manage a separate mapping from vector index to metadata (such…"
+======================================================================
+

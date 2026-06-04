@@ -1,0 +1,129 @@
+# =============================================================
+# RAG Pipeline — Docker Compose
+# =============================================================
+# Services:
+#   rag-ingest    — one-shot ingestion container (runs and exits)
+#   rag-query     — interactive query container
+#   chromadb      — standalone ChromaDB server (optional)
+# =============================================================
+
+version: "3.9"
+
+# ---------------------------------------------------------------------------
+# Shared environment variables
+# ---------------------------------------------------------------------------
+x-common-env: &common-env
+  OPENAI_API_KEY: ${OPENAI_API_KEY}
+  LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+  EMBEDDING_BACKEND: ${EMBEDDING_BACKEND:-openai}
+  EMBEDDING_MODEL: ${EMBEDDING_MODEL:-text-embedding-3-small}
+  VECTOR_STORE_BACKEND: ${VECTOR_STORE_BACKEND:-chroma}
+  CHROMA_PERSIST_DIR: /app/chroma_db
+  FAISS_PERSIST_DIR: /app/faiss_db
+  CHROMA_COLLECTION: ${CHROMA_COLLECTION:-rag_collection}
+  FAISS_DIMENSION: ${FAISS_DIMENSION:-1536}
+  DOCS_DIR: /app/data/documents
+  CHUNKING_STRATEGY: ${CHUNKING_STRATEGY:-sentence_aware}
+  CHUNK_SIZE: ${CHUNK_SIZE:-400}
+  CHUNK_OVERLAP: ${CHUNK_OVERLAP:-80}
+  TOP_K: ${TOP_K:-5}
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+# ---------------------------------------------------------------------------
+# Named volumes for persistence
+# ---------------------------------------------------------------------------
+volumes:
+  chroma_data:
+  faiss_data:
+
+# ---------------------------------------------------------------------------
+# Services
+# ---------------------------------------------------------------------------
+services:
+
+  # ----------------------------------------------------------------
+  # Ingestion service — runs once to build the knowledge base
+  # ----------------------------------------------------------------
+  rag-ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: rag_ingest
+    image: rag-pipeline:latest
+    command: ["python", "main.py", "--ingest"]
+    environment:
+      <<: *common-env
+    volumes:
+      - chroma_data:/app/chroma_db
+      - faiss_data:/app/faiss_db
+      - ./data:/app/data:ro          # mount your documents (read-only)
+    env_file:
+      - .env
+    restart: "no"                    # run once and exit
+
+  # ----------------------------------------------------------------
+  # Query service — interactive Q&A
+  # ----------------------------------------------------------------
+  rag-query:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: rag_query
+    image: rag-pipeline:latest
+    command: ["python", "main.py", "--interactive"]
+    environment:
+      <<: *common-env
+    volumes:
+      - chroma_data:/app/chroma_db
+      - faiss_data:/app/faiss_db
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    depends_on:
+      - rag-ingest
+    restart: "no"
+
+  # ----------------------------------------------------------------
+  # Single-query service — for scripted / CI usage
+  # docker-compose run rag-single-query --query "What is RAG?"
+  # ----------------------------------------------------------------
+  rag-single-query:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: rag_single_query
+    image: rag-pipeline:latest
+    entrypoint: ["python", "main.py"]
+    environment:
+      <<: *common-env
+    volumes:
+      - chroma_data:/app/chroma_db
+      - faiss_data:/app/faiss_db
+    env_file:
+      - .env
+    profiles:
+      - single-query              # only starts when explicitly requested
+
+  # ----------------------------------------------------------------
+  # (Optional) Standalone ChromaDB server
+  # Uncomment if you want ChromaDB running as a separate service
+  # and change VECTOR_STORE_BACKEND to use the HTTP client.
+  # ----------------------------------------------------------------
+  # chromadb:
+  #   image: chromadb/chroma:latest
+  #   container_name: chromadb_server
+  #   ports:
+  #     - "8001:8000"
+  #   volumes:
+  #     - chroma_data:/chroma/chroma
+  #   environment:
+  #     IS_PERSISTENT: "TRUE"
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5

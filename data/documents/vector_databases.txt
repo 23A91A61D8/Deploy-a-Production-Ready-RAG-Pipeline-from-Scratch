@@ -1,0 +1,67 @@
+Vector Databases and Similarity Search: A Practical Guide
+
+Introduction to Vector Databases
+
+A vector database is a type of database that stores data as high-dimensional vectors, also known as vector embeddings. These databases are specifically designed to enable efficient similarity searches across millions or billions of vectors. Vector databases have become essential infrastructure for AI applications, particularly those involving natural language processing, image recognition, and recommendation systems.
+
+Traditional databases are optimized for exact lookups, range queries, and joins on structured data. Vector databases solve a fundamentally different problem: given a query vector, find the stored vectors that are most similar to it. This operation is called Approximate Nearest Neighbor (ANN) search.
+
+How Vector Similarity Search Works
+
+The process of vector similarity search involves several steps. First, a query (such as a text string, an image, or an audio clip) is converted into a vector embedding using a machine learning model. Then, the database computes the similarity between the query vector and all stored vectors. Finally, it returns the vectors (and their associated data) that have the highest similarity to the query.
+
+The two most common distance metrics used in vector search are cosine similarity and Euclidean distance.
+
+Cosine similarity measures the cosine of the angle between two vectors. It ranges from -1 (completely opposite) to 1 (identical direction). Cosine similarity is scale-invariant, meaning it only cares about the direction of the vectors, not their magnitude. This makes it ideal for comparing text embeddings.
+
+Euclidean distance measures the straight-line distance between two points in vector space. It is sensitive to the magnitude of the vectors. L2 normalization (dividing a vector by its magnitude to make it unit length) converts Euclidean distance into cosine similarity.
+
+Indexing Strategies
+
+Searching through every single vector in a database (brute-force search) becomes too slow when the database contains millions or billions of vectors. Indexing strategies are used to dramatically speed up the search at the cost of some accuracy.
+
+HNSW (Hierarchical Navigable Small World) is a graph-based indexing algorithm. It builds a multi-layer graph where nearby vectors are connected to each other. Search starts at the top layer (with few, widely-connected nodes) and progressively navigates to more specific layers. HNSW offers excellent query performance and recall, and is used by ChromaDB by default.
+
+IVF (Inverted File Index) partitions the vector space into clusters using k-means. During search, only vectors in the nearest clusters are searched, dramatically reducing computation. FAISS uses IVF-based indexes for large-scale deployments.
+
+Product Quantization (PQ) is a compression technique that reduces the memory footprint of stored vectors by compressing them into smaller codes. PQ can be combined with IVF for large-scale deployments.
+
+ChromaDB In Depth
+
+ChromaDB is an open-source AI-native vector database. It is designed to be easy to use for AI applications and supports both in-memory and persistent storage modes.
+
+ChromaDB's Python API is simple and intuitive. You create a client, then create or get a collection, then add documents with their embeddings. Querying is done with the query method, passing the query embedding and the number of results to return.
+
+ChromaDB supports filtering by metadata using a where clause. For example, you can restrict search to only documents from a specific source file.
+
+ChromaDB uses HNSW indexing by default with cosine similarity as the distance metric. The persistent client stores data to disk, allowing the index to survive application restarts.
+
+FAISS In Depth
+
+FAISS (Facebook AI Similarity Search) is a library for efficient similarity search and clustering of dense vectors, developed by researchers at Meta AI. FAISS is written in C++ with Python bindings and is highly optimized for both CPU and GPU.
+
+FAISS supports multiple index types. The simplest is IndexFlatL2 (brute-force Euclidean) and IndexFlatIP (brute-force inner product, equivalent to cosine similarity on normalized vectors). For larger datasets, IndexIVFFlat adds inverted file indexing, and IndexIVFPQ adds product quantization for memory efficiency.
+
+A key consideration when using FAISS is that it does not store the original text or metadata natively. You must manage a separate mapping from vector index to metadata (such as a Python list or dictionary).
+
+Unlike ChromaDB, FAISS does not have a built-in filtering mechanism. Filtering must be implemented at the application level by post-processing the results.
+
+Choosing Between ChromaDB and FAISS
+
+For local development and small-to-medium datasets (up to a few million vectors), ChromaDB is the recommended choice due to its ease of use, built-in persistence, and metadata filtering support.
+
+For high-performance production deployments, especially when dealing with hundreds of millions of vectors or when GPU acceleration is needed, FAISS is the better choice.
+
+Both can be used effectively in a RAG pipeline. The choice depends on the scale of the application and the operational requirements.
+
+Best Practices for Vector Database Usage
+
+Always use the same embedding model for both ingestion and query. Using different models will result in vectors in different semantic spaces, making similarity search meaningless.
+
+Store rich metadata alongside your embeddings. Include at minimum the source document name, chunk index, and chunk text. This allows for citation generation and debugging.
+
+Normalize your vectors before storing them if you want cosine similarity behavior. Both ChromaDB and FAISS (with IndexFlatIP) handle this correctly when you follow their documentation.
+
+Periodically rebuild your index if you are making many deletions and insertions. Fragmented indexes can have degraded performance.
+
+Monitor your retrieval quality over time by maintaining a small evaluation set and measuring recall regularly.
